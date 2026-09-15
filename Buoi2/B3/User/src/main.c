@@ -63,11 +63,11 @@ int main(void)
 
     UART1_Init(9600);
 
-    UART1_SendString("\r\nSTM32 UART READY\r\n");
+    UART1_SendString("\r\nDoc gia tri dien ap qua UART\r\n");
 
     ADC01_CH3_Init();
 
-    UART1_SendString("ADC INIT OK\r\n");
+    UART1_SendString("Da Khoi Tao Cho ADC1 Kenh 3\r\n");
 
     while (1)
     {

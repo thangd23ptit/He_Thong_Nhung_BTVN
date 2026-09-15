@@ -55,7 +55,7 @@ static void Process_Command(char *cmd){
     if (String_Equal(cmd, "ON")){
         led_state = LED_ON;
         TIM2_PWM_SetDuty(LED_PWM_CHANNEL,pwm_config);
-        UART1_SendString("LED ON, PWM=");
+        UART1_SendString("BAT LED, DO SANG = ");
         UART_SendNumber(pwm_config);
         UART1_SendString("%\r\n");
         return;
@@ -63,21 +63,7 @@ static void Process_Command(char *cmd){
     if (String_Equal(cmd, "OFF")){
         led_state = LED_OFF;
         TIM2_PWM_SetDuty(LED_PWM_CHANNEL,0);
-        UART1_SendString("LED OFF\r\n");
-        return;
-    }
-    if (String_Equal(cmd, "Status")){
-        UART1_SendString("STATUS: ");
-        if (led_state == LED_ON){
-            UART1_SendString("ON, PWM=");
-            UART_SendNumber(pwm_config);
-            UART1_SendString("%\r\n");
-        }
-        else{
-            UART1_SendString("OFF, PWM_CONFIG=");
-            UART_SendNumber(pwm_config);
-            UART1_SendString("%\r\n");
-        }
+        UART1_SendString("TAT LED\r\n");
         return;
     }
     value = String_ToInt(cmd);
@@ -89,7 +75,7 @@ static void Process_Command(char *cmd){
     if (led_state == LED_ON){
         TIM2_PWM_SetDuty(LED_PWM_CHANNEL,pwm_config);
     }
-    UART1_SendString("PWM CONFIG=");
+    UART1_SendString("Doi Do Sang = ");
     UART_SendNumber(pwm_config);
     UART1_SendString("%\r\n");
 }
