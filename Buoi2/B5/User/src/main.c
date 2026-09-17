@@ -85,6 +85,9 @@ int main(void){
     RCC_Config_72Mhz();
     RCC_Enable_TIM2();
     RCC_Enable_PortA();
+    RCC_Enable_UART1();
+    GPIO_Config(GPIOA,GPIO_PIN_9, GPIO_MODE_AF_PP);
+    GPIO_Config(GPIOA, GPIO_PIN_10, GPIO_MODE_INPUT_FLOATING);
     GPIO_Config(GPIOA,GPIO_PIN_0,GPIO_MODE_AF_PP);
     TIM2_PWM_Init();
     led_state = LED_OFF;

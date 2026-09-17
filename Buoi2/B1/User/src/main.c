@@ -2,6 +2,7 @@
 
 #include "RCC.h"
 #include "UART.h"
+#include "GPIO.h"
 
 #define MA_LOP  "He Thong Nhung"
 #define MA_NHOM  " Nhom 02"
@@ -10,6 +11,10 @@
 
 int main(void)
 {
+    RCC_Enable_PortA();
+    RCC_Enable_UART1();
+    GPIO_Config(GPIOA, GPIO_PIN_9, GPIO_MODE_AF_PP);
+    GPIO_Config(GPIOA, GPIO_PIN_10, GPIO_MODE_INPUT_FLOATING);
     char rx_buffer[RX_BUFFER_SIZE];
     char c;
     uint32_t index;

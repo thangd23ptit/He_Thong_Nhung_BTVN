@@ -15,7 +15,6 @@ int main(void)
     RCC_Config_72Mhz();
 
     RCC_Enable_PortA();
-
     GPIO_Config(GPIOA, LED_01HZ, GPIO_MODE_OUTPUT_PP);
     GPIO_Config(GPIOA, LED_1HZ, GPIO_MODE_OUTPUT_PP);
     GPIO_Config(GPIOA, LED_10HZ, GPIO_MODE_OUTPUT_PP);

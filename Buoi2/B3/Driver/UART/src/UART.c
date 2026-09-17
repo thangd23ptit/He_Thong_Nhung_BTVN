@@ -4,35 +4,11 @@
 
 void UART1_Init(uint32_t baudrate)
 {
-    RCC_Enable_PortA();
-    RCC_Enable_UART1();
-
-    // PA9  = USART1_TX
-    // PA10 = USART1_RX
-
-    GPIO_Config(GPIOA, GPIO_PIN_9, GPIO_MODE_AF_PP);
-    GPIO_Config(GPIOA, GPIO_PIN_10, GPIO_MODE_INPUT_FLOATING);
-
-    // USART1 clock = 72 MHz
     USART1_BRR = (72000000UL + baudrate / 2) / baudrate;
-
-    // Reset CR1
     USART1_CR1 = 0;
-
-    // UE = 1
     USART1_CR1 |= (1 << 13);
-
-    // TE = 1
     USART1_CR1 |= (1 << 3);
-
-    // RE = 1
     USART1_CR1 |= (1 << 2);
-
-    // QUAN TRỌNG:
-    // KHÔNG bật RXNEIE
-    // USART1_CR1 |= (1 << 5);
-
-    // KHÔNG gọi NVIC_UART_En();
 }
 
 

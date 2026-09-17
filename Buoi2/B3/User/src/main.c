@@ -56,6 +56,10 @@ int main(void)
 {   
     RCC_Enable_PortA();
     RCC_Enable_ADC01();
+    RCC_Enable_UART1();
+
+    GPIO_Config(GPIOA, GPIO_PIN_9, GPIO_MODE_AF_PP);
+    GPIO_Config(GPIOA, GPIO_PIN_10, GPIO_MODE_INPUT_FLOATING);
     uint16_t adc_value;
     uint32_t voltage_mV;
 
