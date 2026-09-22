@@ -1,0 +1,297 @@
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x34 Output/main.o
+ .comment       0x0000000000000000       0x34 Output/startup.o
+ .comment       0x0000000000000000       0x34 Output/GPIO.o
+ .comment       0x0000000000000000       0x34 Output/RCC.o
+ .comment       0x0000000000000000       0x34 Output/EXTI.o
+ .comment       0x0000000000000000       0x34 Output/UART.o
+ .comment       0x0000000000000000       0x34 Output/SYSTICK.o
+ .comment       0x0000000000000000       0x34 Output/AFIO.o
+ .comment       0x0000000000000000       0x34 Output/DMA.o
+ .comment       0x0000000000000000       0x34 Output/ADC.o
+ .comment       0x0000000000000000       0x34 Output/NVIC.o
+ .comment       0x0000000000000000       0x34 Output/TIM.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000008000000 0x0000000000010000 xr
+RAM              0x0000000020000000 0x0000000000005000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD Output/main.o
+LOAD Output/startup.o
+LOAD Output/GPIO.o
+LOAD Output/RCC.o
+LOAD Output/EXTI.o
+LOAD Output/UART.o
+LOAD Output/SYSTICK.o
+LOAD Output/AFIO.o
+LOAD Output/DMA.o
+LOAD Output/ADC.o
+LOAD Output/NVIC.o
+LOAD Output/TIM.o
+                0x0000000020005000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x0000000008000000      0x130
+                0x0000000008000000                . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x0000000008000000      0x130 Output/startup.o
+                0x0000000008000000                g_pfnVectors
+                0x0000000008000130                . = ALIGN (0x4)
+
+.text           0x0000000008000130     0x12e4
+                0x0000000008000130                . = ALIGN (0x4)
+ *(.text)
+ .text          0x0000000008000130       0xc0 Output/main.o
+                0x0000000008000174                main
+ .text          0x00000000080001f0       0x64 Output/startup.o
+                0x00000000080001f0                Reset_Handler
+                0x000000000800024c                TIM8_TRG_COM_IRQHandler
+                0x000000000800024c                TIM8_CC_IRQHandler
+                0x000000000800024c                DebugMon_Handler
+                0x000000000800024c                TIM1_CC_IRQHandler
+                0x000000000800024c                HardFault_Handler
+                0x000000000800024c                TIM6_IRQHandler
+                0x000000000800024c                PVD_IRQHandler
+                0x000000000800024c                SDIO_IRQHandler
+                0x000000000800024c                PendSV_Handler
+                0x000000000800024c                NMI_Handler
+                0x000000000800024c                I2C2_EV_IRQHandler
+                0x000000000800024c                UsageFault_Handler
+                0x000000000800024c                ADC1_2_IRQHandler
+                0x000000000800024c                SPI1_IRQHandler
+                0x000000000800024c                TAMPER_IRQHandler
+                0x000000000800024c                TIM8_UP_IRQHandler
+                0x000000000800024c                DMA2_Channel2_IRQHandler
+                0x000000000800024c                USART3_IRQHandler
+                0x000000000800024c                RTC_IRQHandler
+                0x000000000800024c                DMA1_Channel7_IRQHandler
+                0x000000000800024c                CAN1_RX1_IRQHandler
+                0x000000000800024c                UART5_IRQHandler
+                0x000000000800024c                ADC3_IRQHandler
+                0x000000000800024c                TIM4_IRQHandler
+                0x000000000800024c                DMA2_Channel1_IRQHandler
+                0x000000000800024c                I2C1_EV_IRQHandler
+                0x000000000800024c                DMA1_Channel6_IRQHandler
+                0x000000000800024c                UART4_IRQHandler
+                0x000000000800024c                TIM3_IRQHandler
+                0x000000000800024c                RCC_IRQHandler
+                0x000000000800024c                TIM1_TRG_COM_IRQHandler
+                0x000000000800024c                Default_Handler
+                0x000000000800024c                EXTI15_10_IRQHandler
+                0x000000000800024c                TIM7_IRQHandler
+                0x000000000800024c                TIM5_IRQHandler
+                0x000000000800024c                EXTI9_5_IRQHandler
+                0x000000000800024c                SPI2_IRQHandler
+                0x000000000800024c                MemManage_Handler
+                0x000000000800024c                SVC_Handler
+                0x000000000800024c                DMA1_Channel5_IRQHandler
+                0x000000000800024c                USB_LP_CAN1_RX0_IRQHandler
+                0x000000000800024c                USB_HP_CAN1_TX_IRQHandler
+                0x000000000800024c                DMA1_Channel3_IRQHandler
+                0x000000000800024c                FSMC_IRQHandler
+                0x000000000800024c                TIM1_UP_IRQHandler
+                0x000000000800024c                WWDG_IRQHandler
+                0x000000000800024c                TIM2_IRQHandler
+                0x000000000800024c                TIM1_BRK_IRQHandler
+                0x000000000800024c                RTCAlarm_IRQHandler
+                0x000000000800024c                DMA2_Channel4_5_IRQHandler
+                0x000000000800024c                USART2_IRQHandler
+                0x000000000800024c                I2C2_ER_IRQHandler
+                0x000000000800024c                DMA1_Channel2_IRQHandler
+                0x000000000800024c                TIM8_BRK_IRQHandler
+                0x000000000800024c                CAN1_SCE_IRQHandler
+                0x000000000800024c                FLASH_IRQHandler
+                0x000000000800024c                BusFault_Handler
+                0x000000000800024c                USART1_IRQHandler
+                0x000000000800024c                SPI3_IRQHandler
+                0x000000000800024c                I2C1_ER_IRQHandler
+                0x000000000800024c                USBWakeUp_IRQHandler
+                0x000000000800024c                DMA2_Channel3_IRQHandler
+ .text          0x0000000008000254      0x1ac Output/GPIO.o
+                0x0000000008000254                GPIO_Config
+                0x0000000008000388                GPIO_Write_Pin
+                0x00000000080003b6                GPIO_Read_Pin
+                0x00000000080003de                GPIO_Toggle_Pin
+ .text          0x0000000008000400      0x2f8 Output/RCC.o
+                0x0000000008000400                RCC_Config_72Mhz
+                0x0000000008000500                RCC_Enable_DMA1
+                0x000000000800051c                RCC_Enable_AFIO
+                0x0000000008000538                RCC_Enable_PortA
+                0x0000000008000554                RCC_Enable_PortB
+                0x0000000008000570                RCC_Enable_PortC
+                0x000000000800058c                RCC_Enable_ADC1
+                0x00000000080005a8                RCC_Enable_ADC2
+                0x00000000080005c4                RCC_Enable_TIM2
+                0x00000000080005e0                RCC_Enable_TIM3
+                0x00000000080005fc                RCC_Enable_TIM4
+                0x0000000008000618                RCC_Enable_UART1
+                0x0000000008000634                RCC_Enable_UART2
+                0x0000000008000650                RCC_Enable_UART3
+                0x000000000800066c                RCC_Enable_SPI1
+                0x0000000008000688                RCC_Enable_SPI2
+                0x00000000080006a4                RCC_Enable_I2C1
+                0x00000000080006c0                RCC_Enable_I2C2
+                0x00000000080006dc                RCC_Enable_USB
+ .text          0x00000000080006f8      0x30c Output/EXTI.o
+                0x00000000080006f8                EXTI0_Callback
+                0x0000000008000704                EXTI1_Callback
+                0x0000000008000710                EXTI2_Callback
+                0x000000000800071c                EXTI3_Callback
+                0x0000000008000728                EXTI4_Callback
+                0x0000000008000734                EXTI_Init
+                0x0000000008000950                EXTI0_IRQHandler
+                0x0000000008000974                EXTI1_IRQHandler
+                0x0000000008000998                EXTI2_IRQHandler
+                0x00000000080009bc                EXTI3_IRQHandler
+                0x00000000080009e0                EXTI4_IRQHandler
+ .text          0x0000000008000a04      0x1f0 Output/UART.o
+                0x0000000008000a04                UART1_Init
+                0x0000000008000a98                UART1_DMA_Enable
+                0x0000000008000ab4                UART1_DMA_Disable
+                0x0000000008000ad0                UART1_SendChar
+                0x0000000008000b00                UART1_SendString
+                0x0000000008000b2c                UART1_SendNumber
+                0x0000000008000bcc                UART1_ReadChar
+ .text          0x0000000008000bf4       0x90 Output/SYSTICK.o
+                0x0000000008000bf4                SysTick_Init
+                0x0000000008000c24                SysTick_Handler
+                0x0000000008000c40                SysTick_GetTick
+                0x0000000008000c54                SysTick_DelayMs
+ .text          0x0000000008000c84      0x110 Output/AFIO.o
+                0x0000000008000c84                AFIO_EXTI_Config
+                0x0000000008000d5c                AFIO_USART1_Remap
+ .text          0x0000000008000d94      0x31c Output/DMA.o
+                0x0000000008000d94                DMA1_Channel1_Init
+                0x0000000008000e18                DMA1_Channel1_Start
+                0x0000000008000e34                DMA1_Channel1_Stop
+                0x0000000008000e50                DMA1_Channel1_HalfComplete
+                0x0000000008000e74                DMA1_Channel1_TransferComplete
+                0x0000000008000e98                DMA1_Channel1_IRQHandler
+                0x0000000008000efc                DMA1_Channel4_Init
+                0x0000000008000f64                DMA1_Channel4_Send
+                0x0000000008000ff4                DMA1_Channel4_IsBusy
+                0x000000000800100c                DMA1_Channel4_Stop
+                0x0000000008001040                DMA1_Channel4_IRQHandler
+ .text          0x00000000080010b0      0x208 Output/ADC.o
+                0x00000000080010b0                ADC1_Init
+                0x0000000008001100                ADC1_Config_Channel
+                0x00000000080011d0                ADC1_Config_Trigger_TIM3
+                0x0000000008001204                ADC1_DMA_Enable
+                0x0000000008001220                ADC1_Calibrate
+                0x0000000008001280                ADC1_Read
+ .text          0x00000000080012b8       0x98 Output/NVIC.o
+                0x00000000080012b8                NVIC_EnableIRQ
+                0x0000000008001304                NVIC_DisableIRQ
+ .text          0x0000000008001350       0xc4 Output/TIM.o
+                0x0000000008001350                TIM3_Init
+                0x00000000080013b4                TIM3_Set_TRGO_Update
+                0x00000000080013dc                TIM3_Start
+                0x00000000080013f8                TIM3_Stop
+ *(.text.*)
+ *(.rodata)
+ *(.rodata.*)
+                0x0000000008001414                . = ALIGN (0x4)
+                0x0000000008001414                _etext = .
+
+.glue_7         0x0000000008001414        0x0
+ .glue_7        0x0000000008001414        0x0 linker stubs
+
+.glue_7t        0x0000000008001414        0x0
+ .glue_7t       0x0000000008001414        0x0 linker stubs
+
+.vfp11_veneer   0x0000000008001414        0x0
+ .vfp11_veneer  0x0000000008001414        0x0 linker stubs
+
+.v4_bx          0x0000000008001414        0x0
+ .v4_bx         0x0000000008001414        0x0 linker stubs
+
+.iplt           0x0000000008001414        0x0
+ .iplt          0x0000000008001414        0x0 Output/main.o
+
+.rel.dyn        0x0000000008001414        0x0
+ .rel.iplt      0x0000000008001414        0x0 Output/main.o
+
+.data           0x0000000020000000        0x0 load address 0x0000000008001414
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sdata = .
+ *(.data)
+ .data          0x0000000020000000        0x0 Output/main.o
+ .data          0x0000000020000000        0x0 Output/startup.o
+ .data          0x0000000020000000        0x0 Output/GPIO.o
+ .data          0x0000000020000000        0x0 Output/RCC.o
+ .data          0x0000000020000000        0x0 Output/EXTI.o
+ .data          0x0000000020000000        0x0 Output/UART.o
+ .data          0x0000000020000000        0x0 Output/SYSTICK.o
+ .data          0x0000000020000000        0x0 Output/AFIO.o
+ .data          0x0000000020000000        0x0 Output/DMA.o
+ .data          0x0000000020000000        0x0 Output/ADC.o
+ .data          0x0000000020000000        0x0 Output/NVIC.o
+ .data          0x0000000020000000        0x0 Output/TIM.o
+ *(.data.*)
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _edata = .
+                0x0000000008001414                _sidata = LOADADDR (.data)
+
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008001414
+ .igot.plt      0x0000000020000000        0x0 Output/main.o
+
+.bss            0x0000000020000000       0xd0 load address 0x0000000008001414
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sbss = .
+ *(.bss)
+ .bss           0x0000000020000000       0xc8 Output/main.o
+ .bss           0x00000000200000c8        0x0 Output/startup.o
+ .bss           0x00000000200000c8        0x0 Output/GPIO.o
+ .bss           0x00000000200000c8        0x0 Output/RCC.o
+ .bss           0x00000000200000c8        0x0 Output/EXTI.o
+ .bss           0x00000000200000c8        0x0 Output/UART.o
+ .bss           0x00000000200000c8        0x4 Output/SYSTICK.o
+ .bss           0x00000000200000cc        0x0 Output/AFIO.o
+ .bss           0x00000000200000cc        0x3 Output/DMA.o
+ .bss           0x00000000200000cf        0x0 Output/ADC.o
+ .bss           0x00000000200000cf        0x0 Output/NVIC.o
+ .bss           0x00000000200000cf        0x0 Output/TIM.o
+ *(.bss.*)
+ *(COMMON)
+                0x00000000200000d0                . = ALIGN (0x4)
+ *fill*         0x00000000200000cf        0x1 
+                0x00000000200000d0                _ebss = .
+
+/DISCARD/
+ *(.comment)
+ *(.note*)
+OUTPUT(Output/main.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x0000000000000000       0x2d
+ .ARM.attributes
+                0x0000000000000000       0x2d Output/main.o
+ .ARM.attributes
+                0x000000000000002d       0x2d Output/startup.o
+ .ARM.attributes
+                0x000000000000005a       0x2d Output/GPIO.o
+ .ARM.attributes
+                0x0000000000000087       0x2d Output/RCC.o
+ .ARM.attributes
+                0x00000000000000b4       0x2d Output/EXTI.o
+ .ARM.attributes
+                0x00000000000000e1       0x2d Output/UART.o
+ .ARM.attributes
+                0x000000000000010e       0x2d Output/SYSTICK.o
+ .ARM.attributes
+                0x000000000000013b       0x2d Output/AFIO.o
+ .ARM.attributes
+                0x0000000000000168       0x2d Output/DMA.o
+ .ARM.attributes
+                0x0000000000000195       0x2d Output/ADC.o
+ .ARM.attributes
+                0x00000000000001c2       0x2d Output/NVIC.o
+ .ARM.attributes
+                0x00000000000001ef       0x2d Output/TIM.o
