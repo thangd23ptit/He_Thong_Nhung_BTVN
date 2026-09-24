@@ -5,7 +5,7 @@
 #include "GPIO.h"
 
 #define MA_LOP  "He Thong Nhung"
-#define MA_NHOM  " Nhom 02"
+#define MA_NHOM  " Nhom 01"
 
 #define RX_BUFFER_SIZE 128
 

@@ -34,7 +34,7 @@ LOAD Output/SYSTICK.o
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000130                . = ALIGN (0x4)
 
-.text           0x0000000008000130      0x91c
+.text           0x0000000008000130      0x8fc
                 0x0000000008000130                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000130       0xb0 Output/main.o
@@ -133,41 +133,41 @@ LOAD Output/SYSTICK.o
                 0x0000000008000650                EXTI_Init
                 0x0000000008000884                NVIC_UART_En
                 0x00000000080008a0                NVIC_USB_En
- .text          0x00000000080008bc      0x100 Output/UART.o
+ .text          0x00000000080008bc       0xe0 Output/UART.o
                 0x00000000080008bc                UART1_Init
-                0x0000000008000938                UART1_SendChar
-                0x0000000008000968                UART1_SendString
-                0x0000000008000992                UART1_ReadChar
- .text          0x00000000080009bc       0x90 Output/SYSTICK.o
-                0x00000000080009bc                SysTick_Init
-                0x00000000080009ec                SysTick_Handler
-                0x0000000008000a08                SysTick_GetTick
-                0x0000000008000a1c                SysTick_DelayMs
+                0x0000000008000918                UART1_SendChar
+                0x0000000008000948                UART1_SendString
+                0x0000000008000972                UART1_ReadChar
+ .text          0x000000000800099c       0x90 Output/SYSTICK.o
+                0x000000000800099c                SysTick_Init
+                0x00000000080009cc                SysTick_Handler
+                0x00000000080009e8                SysTick_GetTick
+                0x00000000080009fc                SysTick_DelayMs
  *(.text.*)
  *(.rodata)
  *(.rodata.*)
-                0x0000000008000a4c                . = ALIGN (0x4)
-                0x0000000008000a4c                _etext = .
+                0x0000000008000a2c                . = ALIGN (0x4)
+                0x0000000008000a2c                _etext = .
 
-.glue_7         0x0000000008000a4c        0x0
- .glue_7        0x0000000008000a4c        0x0 linker stubs
+.glue_7         0x0000000008000a2c        0x0
+ .glue_7        0x0000000008000a2c        0x0 linker stubs
 
-.glue_7t        0x0000000008000a4c        0x0
- .glue_7t       0x0000000008000a4c        0x0 linker stubs
+.glue_7t        0x0000000008000a2c        0x0
+ .glue_7t       0x0000000008000a2c        0x0 linker stubs
 
-.vfp11_veneer   0x0000000008000a4c        0x0
- .vfp11_veneer  0x0000000008000a4c        0x0 linker stubs
+.vfp11_veneer   0x0000000008000a2c        0x0
+ .vfp11_veneer  0x0000000008000a2c        0x0 linker stubs
 
-.v4_bx          0x0000000008000a4c        0x0
- .v4_bx         0x0000000008000a4c        0x0 linker stubs
+.v4_bx          0x0000000008000a2c        0x0
+ .v4_bx         0x0000000008000a2c        0x0 linker stubs
 
-.iplt           0x0000000008000a4c        0x0
- .iplt          0x0000000008000a4c        0x0 Output/main.o
+.iplt           0x0000000008000a2c        0x0
+ .iplt          0x0000000008000a2c        0x0 Output/main.o
 
-.rel.dyn        0x0000000008000a4c        0x0
- .rel.iplt      0x0000000008000a4c        0x0 Output/main.o
+.rel.dyn        0x0000000008000a2c        0x0
+ .rel.iplt      0x0000000008000a2c        0x0 Output/main.o
 
-.data           0x0000000020000000        0x0 load address 0x0000000008000a4c
+.data           0x0000000020000000        0x0 load address 0x0000000008000a2c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -181,12 +181,12 @@ LOAD Output/SYSTICK.o
  *(.data.*)
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _edata = .
-                0x0000000008000a4c                _sidata = LOADADDR (.data)
+                0x0000000008000a2c                _sidata = LOADADDR (.data)
 
-.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000a4c
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000a2c
  .igot.plt      0x0000000020000000        0x0 Output/main.o
 
-.bss            0x0000000020000000        0x4 load address 0x0000000008000a4c
+.bss            0x0000000020000000        0x4 load address 0x0000000008000a2c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sbss = .
  *(.bss)

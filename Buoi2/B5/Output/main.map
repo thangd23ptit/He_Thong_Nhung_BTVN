@@ -38,150 +38,149 @@ LOAD Output/TIM.o
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000130                . = ALIGN (0x4)
 
-.text           0x0000000008000130      0xf2c
+.text           0x0000000008000130     0x1170
                 0x0000000008000130                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000008000130      0x2b0 Output/main.o
-                0x0000000008000328                main
- .text          0x00000000080003e0       0x64 Output/startup.o
-                0x00000000080003e0                Reset_Handler
-                0x000000000800043c                EXTI2_IRQHandler
-                0x000000000800043c                TIM8_TRG_COM_IRQHandler
-                0x000000000800043c                TIM8_CC_IRQHandler
-                0x000000000800043c                DebugMon_Handler
-                0x000000000800043c                TIM1_CC_IRQHandler
-                0x000000000800043c                HardFault_Handler
-                0x000000000800043c                TIM6_IRQHandler
-                0x000000000800043c                PVD_IRQHandler
-                0x000000000800043c                SDIO_IRQHandler
-                0x000000000800043c                PendSV_Handler
-                0x000000000800043c                NMI_Handler
-                0x000000000800043c                EXTI3_IRQHandler
-                0x000000000800043c                I2C2_EV_IRQHandler
-                0x000000000800043c                UsageFault_Handler
-                0x000000000800043c                ADC1_2_IRQHandler
-                0x000000000800043c                SPI1_IRQHandler
-                0x000000000800043c                TAMPER_IRQHandler
-                0x000000000800043c                TIM8_UP_IRQHandler
-                0x000000000800043c                DMA2_Channel2_IRQHandler
-                0x000000000800043c                DMA1_Channel4_IRQHandler
-                0x000000000800043c                USART3_IRQHandler
-                0x000000000800043c                RTC_IRQHandler
-                0x000000000800043c                DMA1_Channel7_IRQHandler
-                0x000000000800043c                CAN1_RX1_IRQHandler
-                0x000000000800043c                UART5_IRQHandler
-                0x000000000800043c                ADC3_IRQHandler
-                0x000000000800043c                TIM4_IRQHandler
-                0x000000000800043c                DMA2_Channel1_IRQHandler
-                0x000000000800043c                I2C1_EV_IRQHandler
-                0x000000000800043c                DMA1_Channel6_IRQHandler
-                0x000000000800043c                UART4_IRQHandler
-                0x000000000800043c                TIM3_IRQHandler
-                0x000000000800043c                RCC_IRQHandler
-                0x000000000800043c                TIM1_TRG_COM_IRQHandler
-                0x000000000800043c                DMA1_Channel1_IRQHandler
-                0x000000000800043c                Default_Handler
-                0x000000000800043c                EXTI15_10_IRQHandler
-                0x000000000800043c                TIM7_IRQHandler
-                0x000000000800043c                TIM5_IRQHandler
-                0x000000000800043c                EXTI9_5_IRQHandler
-                0x000000000800043c                SPI2_IRQHandler
-                0x000000000800043c                MemManage_Handler
-                0x000000000800043c                SVC_Handler
-                0x000000000800043c                DMA1_Channel5_IRQHandler
-                0x000000000800043c                EXTI4_IRQHandler
-                0x000000000800043c                USB_LP_CAN1_RX0_IRQHandler
-                0x000000000800043c                USB_HP_CAN1_TX_IRQHandler
-                0x000000000800043c                DMA1_Channel3_IRQHandler
-                0x000000000800043c                FSMC_IRQHandler
-                0x000000000800043c                TIM1_UP_IRQHandler
-                0x000000000800043c                WWDG_IRQHandler
-                0x000000000800043c                TIM2_IRQHandler
-                0x000000000800043c                TIM1_BRK_IRQHandler
-                0x000000000800043c                EXTI1_IRQHandler
-                0x000000000800043c                RTCAlarm_IRQHandler
-                0x000000000800043c                DMA2_Channel4_5_IRQHandler
-                0x000000000800043c                USART2_IRQHandler
-                0x000000000800043c                I2C2_ER_IRQHandler
-                0x000000000800043c                DMA1_Channel2_IRQHandler
-                0x000000000800043c                TIM8_BRK_IRQHandler
-                0x000000000800043c                CAN1_SCE_IRQHandler
-                0x000000000800043c                FLASH_IRQHandler
-                0x000000000800043c                BusFault_Handler
-                0x000000000800043c                SPI3_IRQHandler
-                0x000000000800043c                I2C1_ER_IRQHandler
-                0x000000000800043c                USBWakeUp_IRQHandler
-                0x000000000800043c                DMA2_Channel3_IRQHandler
- .text          0x0000000008000444      0x1bc Output/GPIO.o
-                0x0000000008000444                GPIO_Config
-                0x0000000008000586                GPIO_Write_Pin
-                0x00000000080005b4                GPIO_Read_Pin
-                0x00000000080005dc                GPIO_Toggle_Pin
- .text          0x0000000008000600      0x1e8 Output/RCC.o
-                0x0000000008000600                RCC_Config_72Mhz
-                0x00000000080006b4                RCC_Enable_PortA
-                0x00000000080006d0                RCC_Enable_PortB
-                0x00000000080006ec                RCC_Enable_PortC
-                0x0000000008000708                RCC_Enable_AFIO
-                0x0000000008000724                RCC_Enable_TIM2
-                0x0000000008000740                RCC_Enable_ADC01
-                0x000000000800075c                RCC_Enable_UART1
-                0x0000000008000778                RCC_Enable_SPI1
-                0x0000000008000794                RCC_Enable_I2C1
-                0x00000000080007b0                RCC_Enable_USB
-                0x00000000080007cc                RCC_Enable_UART2
- .text          0x00000000080007e8      0x2d4 Output/EXTI.o
-                0x00000000080007e8                EXTI0_IRQHandler
-                0x0000000008000814                get_Pin_Number
-                0x0000000008000850                EXTI_Init
-                0x0000000008000a84                NVIC_UART_En
-                0x0000000008000aa0                NVIC_USB_En
- .text          0x0000000008000abc      0x19c Output/UART.o
-                0x0000000008000abc                UART1_Init
-                0x0000000008000b54                UART1_SendChar
-                0x0000000008000b84                UART1_SendString
-                0x0000000008000bae                UART1_ReadChar
-                0x0000000008000bd8                USART1_IRQHandler
- .text          0x0000000008000c58       0x90 Output/SYSTICK.o
-                0x0000000008000c58                SysTick_Init
-                0x0000000008000c88                SysTick_Handler
-                0x0000000008000ca4                SysTick_GetTick
-                0x0000000008000cb8                SysTick_DelayMs
- .text          0x0000000008000ce8      0x12c Output/ADC.o
-                0x0000000008000ce8                ADC01_CH3_Init
-                0x0000000008000de4                ADC01_CH3_Read
- .text          0x0000000008000e14      0x1d0 Output/TIM.o
-                0x0000000008000e14                TIM2_PWM_Init
-                0x0000000008000f22                TIM2_PWM_SetDuty
-                0x0000000008000fac                TIM2_Start
-                0x0000000008000fc8                TIM2_Stop
+ .text          0x0000000008000130      0x454 Output/main.o
+                0x000000000800047c                main
+ .text          0x0000000008000584       0x64 Output/startup.o
+                0x0000000008000584                Reset_Handler
+                0x00000000080005e0                EXTI2_IRQHandler
+                0x00000000080005e0                TIM8_TRG_COM_IRQHandler
+                0x00000000080005e0                TIM8_CC_IRQHandler
+                0x00000000080005e0                DebugMon_Handler
+                0x00000000080005e0                TIM1_CC_IRQHandler
+                0x00000000080005e0                HardFault_Handler
+                0x00000000080005e0                TIM6_IRQHandler
+                0x00000000080005e0                PVD_IRQHandler
+                0x00000000080005e0                SDIO_IRQHandler
+                0x00000000080005e0                PendSV_Handler
+                0x00000000080005e0                NMI_Handler
+                0x00000000080005e0                EXTI3_IRQHandler
+                0x00000000080005e0                I2C2_EV_IRQHandler
+                0x00000000080005e0                UsageFault_Handler
+                0x00000000080005e0                ADC1_2_IRQHandler
+                0x00000000080005e0                SPI1_IRQHandler
+                0x00000000080005e0                TAMPER_IRQHandler
+                0x00000000080005e0                TIM8_UP_IRQHandler
+                0x00000000080005e0                DMA2_Channel2_IRQHandler
+                0x00000000080005e0                DMA1_Channel4_IRQHandler
+                0x00000000080005e0                USART3_IRQHandler
+                0x00000000080005e0                RTC_IRQHandler
+                0x00000000080005e0                DMA1_Channel7_IRQHandler
+                0x00000000080005e0                CAN1_RX1_IRQHandler
+                0x00000000080005e0                UART5_IRQHandler
+                0x00000000080005e0                ADC3_IRQHandler
+                0x00000000080005e0                TIM4_IRQHandler
+                0x00000000080005e0                DMA2_Channel1_IRQHandler
+                0x00000000080005e0                I2C1_EV_IRQHandler
+                0x00000000080005e0                DMA1_Channel6_IRQHandler
+                0x00000000080005e0                UART4_IRQHandler
+                0x00000000080005e0                TIM3_IRQHandler
+                0x00000000080005e0                RCC_IRQHandler
+                0x00000000080005e0                TIM1_TRG_COM_IRQHandler
+                0x00000000080005e0                DMA1_Channel1_IRQHandler
+                0x00000000080005e0                Default_Handler
+                0x00000000080005e0                EXTI15_10_IRQHandler
+                0x00000000080005e0                TIM7_IRQHandler
+                0x00000000080005e0                TIM5_IRQHandler
+                0x00000000080005e0                EXTI9_5_IRQHandler
+                0x00000000080005e0                SPI2_IRQHandler
+                0x00000000080005e0                MemManage_Handler
+                0x00000000080005e0                SVC_Handler
+                0x00000000080005e0                DMA1_Channel5_IRQHandler
+                0x00000000080005e0                EXTI4_IRQHandler
+                0x00000000080005e0                USB_LP_CAN1_RX0_IRQHandler
+                0x00000000080005e0                USB_HP_CAN1_TX_IRQHandler
+                0x00000000080005e0                DMA1_Channel3_IRQHandler
+                0x00000000080005e0                FSMC_IRQHandler
+                0x00000000080005e0                TIM1_UP_IRQHandler
+                0x00000000080005e0                WWDG_IRQHandler
+                0x00000000080005e0                TIM2_IRQHandler
+                0x00000000080005e0                TIM1_BRK_IRQHandler
+                0x00000000080005e0                EXTI1_IRQHandler
+                0x00000000080005e0                RTCAlarm_IRQHandler
+                0x00000000080005e0                DMA2_Channel4_5_IRQHandler
+                0x00000000080005e0                USART2_IRQHandler
+                0x00000000080005e0                I2C2_ER_IRQHandler
+                0x00000000080005e0                DMA1_Channel2_IRQHandler
+                0x00000000080005e0                TIM8_BRK_IRQHandler
+                0x00000000080005e0                CAN1_SCE_IRQHandler
+                0x00000000080005e0                FLASH_IRQHandler
+                0x00000000080005e0                BusFault_Handler
+                0x00000000080005e0                SPI3_IRQHandler
+                0x00000000080005e0                I2C1_ER_IRQHandler
+                0x00000000080005e0                USBWakeUp_IRQHandler
+                0x00000000080005e0                DMA2_Channel3_IRQHandler
+ .text          0x00000000080005e8      0x1bc Output/GPIO.o
+                0x00000000080005e8                GPIO_Config
+                0x000000000800072a                GPIO_Write_Pin
+                0x0000000008000758                GPIO_Read_Pin
+                0x0000000008000780                GPIO_Toggle_Pin
+ .text          0x00000000080007a4      0x1e8 Output/RCC.o
+                0x00000000080007a4                RCC_Config_72Mhz
+                0x0000000008000858                RCC_Enable_PortA
+                0x0000000008000874                RCC_Enable_PortB
+                0x0000000008000890                RCC_Enable_PortC
+                0x00000000080008ac                RCC_Enable_AFIO
+                0x00000000080008c8                RCC_Enable_TIM2
+                0x00000000080008e4                RCC_Enable_ADC01
+                0x0000000008000900                RCC_Enable_UART1
+                0x000000000800091c                RCC_Enable_SPI1
+                0x0000000008000938                RCC_Enable_I2C1
+                0x0000000008000954                RCC_Enable_USB
+                0x0000000008000970                RCC_Enable_UART2
+ .text          0x000000000800098c      0x2d4 Output/EXTI.o
+                0x000000000800098c                EXTI0_IRQHandler
+                0x00000000080009b8                get_Pin_Number
+                0x00000000080009f4                EXTI_Init
+                0x0000000008000c28                NVIC_UART_En
+                0x0000000008000c44                NVIC_USB_En
+ .text          0x0000000008000c60      0x19c Output/UART.o
+                0x0000000008000c60                UART1_Init
+                0x0000000008000cf8                UART1_SendChar
+                0x0000000008000d28                UART1_SendString
+                0x0000000008000d52                UART1_ReadChar
+                0x0000000008000d7c                USART1_IRQHandler
+ .text          0x0000000008000dfc       0x90 Output/SYSTICK.o
+                0x0000000008000dfc                SysTick_Init
+                0x0000000008000e2c                SysTick_Handler
+                0x0000000008000e48                SysTick_GetTick
+                0x0000000008000e5c                SysTick_DelayMs
+ .text          0x0000000008000e8c      0x12c Output/ADC.o
+                0x0000000008000e8c                ADC01_CH3_Init
+                0x0000000008000f88                ADC01_CH3_Read
+ .text          0x0000000008000fb8      0x1d0 Output/TIM.o
+                0x0000000008000fb8                TIM2_PWM_Init
+                0x00000000080010c6                TIM2_PWM_SetDuty
+                0x0000000008001150                TIM2_Start
+                0x000000000800116c                TIM2_Stop
  *(.text.*)
  *(.rodata)
- .rodata        0x0000000008000fe4       0x76 Output/main.o
+ .rodata        0x0000000008001188      0x118 Output/main.o
  *(.rodata.*)
-                0x000000000800105c                . = ALIGN (0x4)
- *fill*         0x000000000800105a        0x2 
-                0x000000000800105c                _etext = .
+                0x00000000080012a0                . = ALIGN (0x4)
+                0x00000000080012a0                _etext = .
 
-.glue_7         0x000000000800105c        0x0
- .glue_7        0x000000000800105c        0x0 linker stubs
+.glue_7         0x00000000080012a0        0x0
+ .glue_7        0x00000000080012a0        0x0 linker stubs
 
-.glue_7t        0x000000000800105c        0x0
- .glue_7t       0x000000000800105c        0x0 linker stubs
+.glue_7t        0x00000000080012a0        0x0
+ .glue_7t       0x00000000080012a0        0x0 linker stubs
 
-.vfp11_veneer   0x000000000800105c        0x0
- .vfp11_veneer  0x000000000800105c        0x0 linker stubs
+.vfp11_veneer   0x00000000080012a0        0x0
+ .vfp11_veneer  0x00000000080012a0        0x0 linker stubs
 
-.v4_bx          0x000000000800105c        0x0
- .v4_bx         0x000000000800105c        0x0 linker stubs
+.v4_bx          0x00000000080012a0        0x0
+ .v4_bx         0x00000000080012a0        0x0 linker stubs
 
-.iplt           0x000000000800105c        0x0
- .iplt          0x000000000800105c        0x0 Output/main.o
+.iplt           0x00000000080012a0        0x0
+ .iplt          0x00000000080012a0        0x0 Output/main.o
 
-.rel.dyn        0x000000000800105c        0x0
- .rel.iplt      0x000000000800105c        0x0 Output/main.o
+.rel.dyn        0x00000000080012a0        0x0
+ .rel.iplt      0x00000000080012a0        0x0 Output/main.o
 
-.data           0x0000000020000000        0x4 load address 0x000000000800105c
+.data           0x0000000020000000        0x4 load address 0x00000000080012a0
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -198,12 +197,12 @@ LOAD Output/TIM.o
                 0x0000000020000004                . = ALIGN (0x4)
  *fill*         0x0000000020000001        0x3 
                 0x0000000020000004                _edata = .
-                0x000000000800105c                _sidata = LOADADDR (.data)
+                0x00000000080012a0                _sidata = LOADADDR (.data)
 
-.igot.plt       0x0000000020000004        0x0 load address 0x0000000008001060
+.igot.plt       0x0000000020000004        0x0 load address 0x00000000080012a4
  .igot.plt      0x0000000020000004        0x0 Output/main.o
 
-.bss            0x0000000020000004       0x4c load address 0x0000000008001060
+.bss            0x0000000020000004       0x4c load address 0x00000000080012a4
                 0x0000000020000004                . = ALIGN (0x4)
                 0x0000000020000004                _sbss = .
  *(.bss)

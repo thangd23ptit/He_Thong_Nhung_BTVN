@@ -4,6 +4,7 @@
 #include "UART.h"
 #include "ADC.h"
 #include "TIM.h"
+#include "GPIO.h"
 
 #define VREF_MV    3300UL
 #define ADC_MAX    4095UL
