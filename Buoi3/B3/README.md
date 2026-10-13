@@ -1,1 +1,0 @@
-[Video demo B3](https://drive.google.com/file/d/1z_RSdQFKyPFrcJXaOU4koMpeB_tX-nDp/view?usp=sharing)

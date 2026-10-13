@@ -1,80 +1,92 @@
+# Tên file thực thi đầu ra
+TARGET = DS1307_RTC
 
-TARGET = main
+# Thư mục chứa mã nguồn và output
+SRC_DIR   = src
+INC_DIR   = inc
+LD_DIR    = ld
+BUILD_DIR = build
 
-CC      = arm-none-eabi-gcc
-AS      = arm-none-eabi-gcc
-OBJCOPY = arm-none-eabi-objcopy
+# Trình biên dịch ARM GCC Cross-Compiler
+PREFIX  = arm-none-eabi-
+CC      = $(PREFIX)gcc
+OBJCOPY = $(PREFIX)objcopy
+OBJDUMP = $(PREFIX)objdump
+SIZE    = $(PREFIX)size
 
-STFLASH = st-flash
+# Tự động lấy tất cả các file .c và .s trong thư mục src/
+C_SRCS = $(wildcard $(SRC_DIR)/*.c)
+S_SRCS = $(wildcard $(SRC_DIR)/*.s)
 
-GDB     = gdb-multiarch
+# Tạo danh sách các file .o tương ứng nằm trong thư mục build/
+OBJS  = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(C_SRCS))
+OBJS += $(patsubst $(SRC_DIR)/%.s, $(BUILD_DIR)/%.o, $(S_SRCS))
 
-SRC_DIRS = User/src \
-		  Startup \
-		  Driver/GPIO/src \
-		  Driver/RCC/src \
-#		  Driver/EXTI/src \
-		  Driver/UART/src \
-		  Driver/SYSTICK/src\
-		  Driver/AFIO/src\
-		  Driver/DMA/src\
-		  Driver/I2C/src\
-		  Module/DS1307/src
+# Linker Script
+LDSCRIPT = $(LD_DIR)/stm32_f103.ld
 
-		  
+# Cờ biên dịch cho Cortex-M3 (STM32F103)
+MCU_FLAGS = -mcpu=cortex-m3 -mthumb
 
-SRC_FILES +=$(foreach SRC_DIRS,$(SRC_DIRS),$(wildcard $(SRC_DIRS)/*))
+# Cờ cho Compiler (CFLAGS)
+CFLAGS  = $(MCU_FLAGS)
+CFLAGS += -I$(INC_DIR)
+CFLAGS += -Wall -Wextra
+CFLAGS += -g -O0
+CFLAGS += -DSTM32F10X_MD
 
-INC_DIRS = User/inc \
-			  Startup \
-			  Driver/GPIO/inc \
-			  Driver/RCC/inc \
-#			  Driver/EXTI/inc \
-			  Driver/UART/inc \
-			  Driver/TYPE \
-			  Driver/AFIO/inc\
-			  Driver/SYSTICK/inc\
-			  Driver/DMA/inc\
-			  Driver/I2C/inc\
-		  	  Module/DS1307/inc
+# Cờ cho Assembler (ASFLAGS)
+ASFLAGS = $(MCU_FLAGS) -g
 
-INC_FILES +=$(foreach INC_DIRS,$(INC_DIRS),$(wildcard $(INC_DIRS)/*))
-INC_DIR_OPT = $(foreach INC_DIRS,$(INC_DIRS),-I$(INC_DIRS))
+# Cờ cho Linker (LDFLAGS)
+LDFLAGS  = $(MCU_FLAGS)
+LDFLAGS += -T$(LDSCRIPT)
+LDFLAGS += -nostartfiles
+LDFLAGS += -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref
+LDFLAGS += --specs=nano.specs -specs=nosys.specs
 
-PATH_OUTPUT = Output
+# Target mặc định khi gõ lệnh 'make'
+all: $(BUILD_DIR)/$(TARGET).bin $(BUILD_DIR)/$(TARGET).hex
+	@echo "================================"
+	@echo " BUILD SUCCESSFUL! "
+	@echo "================================"
+	$(SIZE) $(BUILD_DIR)/$(TARGET).elf
 
-LD_File = Linker/linker.ld
+# 1. Biên dịch từ file .c thành file .o
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
+	@echo "[CC] $< -> $@"
+	$(CC) $(CFLAGS) -c $< -o $@
 
-MCU = cortex-m3
+# 1b. Biên dịch từ file .s (assembly) thành file .o
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.s | $(BUILD_DIR)
+	@echo "[AS] $< -> $@"
+	$(CC) $(ASFLAGS) -c $< -o $@
 
-CHIP=cortex-m3
+# 2. Link các file .o thành file thực thi ELF
+$(BUILD_DIR)/$(TARGET).elf: $(OBJS)
+	@echo "[LD] Linking to $@"
+	$(CC) $(OBJS) $(LDFLAGS) -o $@
 
-CCFLAGS= -c -mcpu=$(CHIP) -mthumb -std=gnu11 -O0 $(INC_DIR_OPT)
+# 3. Chuyển đổi từ file ELF sang file BIN
+$(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
+	@echo "[OBJCOPY] -> $@"
+	$(OBJCOPY) -O binary $< $@
 
-vpath %.c $(SRC_DIRS)
+# 4. Chuyển đổi từ file ELF sang file HEX
+$(BUILD_DIR)/$(TARGET).hex: $(BUILD_DIR)/$(TARGET).elf
+	@echo "[OBJCOPY] -> $@"
+	$(OBJCOPY) -O ihex $< $@
 
-OBJ_FILE := $(notdir $(SRC_FILES))
-OBJ_FILE := $(subst .c,.o,$(OBJ_FILE))
-PATH_OBJ := $(foreach OBJ_FILE,$(OBJ_FILE),$(PATH_OUTPUT)/$(OBJ_FILE))
+# Tạo thư mục build nếu chưa có
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
-LDFLAGS= -nostdlib -T $(LD_File) -Wl,-Map=$(PATH_OUTPUT)/$(TARGET).map
-
-build: $(PATH_OUTPUT)/$(TARGET).bin
-
-$(PATH_OUTPUT)/%.o: %.c
-	$(CC) $(CCFLAGS) -c $< -o $@
-$(PATH_OUTPUT)/$(TARGET).elf: $(PATH_OBJ)
-	$(CC) $(LDFLAGS) -o $@ $^
-$(PATH_OUTPUT)/$(TARGET).bin:$(PATH_OUTPUT)/$(TARGET).elf
-	$(OBJCOPY) -O binary "$^" "$@"
-
-flash: Output/$(TARGET).bin
-	$(STFLASH) write Output/$(TARGET).bin 0x08000000
-
-erase:
-	$(STFLASH) erase
-
+# Lệnh dọn dẹp các file đã build
 clean:
-	rm -f Output/*
-print-%:
-	@echo $($(subst print-,,$@))
+	rm -rf $(BUILD_DIR)
+
+# Lệnh nạp trực tiếp qua ST-Link (bằng st-flash)
+flash: all
+	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x08000000
+
+.PHONY: all clean flash
