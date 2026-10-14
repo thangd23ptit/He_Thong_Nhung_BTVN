@@ -474,6 +474,8 @@ Discarded input sections
                 0x0000000000000000       0xb8 Output/stm32f10x_gpio.o
  .text.GPIO_AFIODeInit
                 0x0000000000000000       0x16 Output/stm32f10x_gpio.o
+ .text.GPIO_StructInit
+                0x0000000000000000        0xe Output/stm32f10x_gpio.o
  .text.GPIO_ReadInputData
                 0x0000000000000000        0x6 Output/stm32f10x_gpio.o
  .text.GPIO_ReadOutputDataBit
@@ -845,6 +847,10 @@ Discarded input sections
                 0x0000000000000000       0x68 Output/stm32f10x_tim.o
  .text.TIM_BDTRConfig
                 0x0000000000000000       0x22 Output/stm32f10x_tim.o
+ .text.TIM_TimeBaseStructInit
+                0x0000000000000000       0x12 Output/stm32f10x_tim.o
+ .text.TIM_OCStructInit
+                0x0000000000000000       0x14 Output/stm32f10x_tim.o
  .text.TIM_ICStructInit
                 0x0000000000000000       0x10 Output/stm32f10x_tim.o
  .text.TIM_BDTRStructInit
@@ -1253,10 +1259,6 @@ Discarded input sections
                 0x0000000000000000       0x18 Output/tasks.o
  .text.ulTaskNotifyTake
                 0x0000000000000000       0x64 Output/tasks.o
- .text.xTaskNotifyWait
-                0x0000000000000000       0x88 Output/tasks.o
- .text.xTaskGenericNotify
-                0x0000000000000000       0xa4 Output/tasks.o
  .text.xTaskGenericNotifyFromISR
                 0x0000000000000000       0xc4 Output/tasks.o
  .text.vTaskNotifyGiveFromISR
@@ -1566,7 +1568,7 @@ END GROUP
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000130                . = ALIGN (0x4)
 
-.text           0x0000000008000130     0x199c
+.text           0x0000000008000130     0x1aa4
                 0x0000000008000130                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000130       0xec /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memcpy.o)
@@ -1574,333 +1576,334 @@ END GROUP
  .text          0x000000000800021c       0xa4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(lib_a-memset.o)
                 0x000000000800021c                memset
  *(.text.*)
- .text.LEDTask  0x00000000080002c0       0xa8 Output/main.o
+ .text.NotifyLEDTask
+                0x00000000080002c0       0x28 Output/main.o
  .text.TaskLED3
-                0x0000000008000368        0x8 Output/main.o
- .text.TaskLED2
-                0x0000000008000370        0x8 Output/main.o
+                0x00000000080002e8       0x5c Output/main.o
  .text.TaskLED1
-                0x0000000008000378        0x8 Output/main.o
- .text.BroadcastEvent
-                0x0000000008000380       0x44 Output/main.o
+                0x0000000008000344       0x88 Output/main.o
+ .text.TaskLED2
+                0x00000000080003cc       0x5c Output/main.o
  .text.TaskButton
-                0x00000000080003c4      0x118 Output/main.o
+                0x0000000008000428       0xfc Output/main.o
  .text.startup.main
-                0x00000000080004dc      0x1d0 Output/main.o
-                0x00000000080004dc                main
+                0x0000000008000524      0x18c Output/main.o
+                0x0000000008000524                main
  .text.Default_Handler
-                0x00000000080006ac        0x2 Output/startup.o
-                0x00000000080006ac                EXTI2_IRQHandler
-                0x00000000080006ac                TIM8_TRG_COM_IRQHandler
-                0x00000000080006ac                TIM8_CC_IRQHandler
-                0x00000000080006ac                DebugMon_Handler
-                0x00000000080006ac                TIM1_CC_IRQHandler
-                0x00000000080006ac                HardFault_Handler
-                0x00000000080006ac                TIM6_IRQHandler
-                0x00000000080006ac                PVD_IRQHandler
-                0x00000000080006ac                SDIO_IRQHandler
-                0x00000000080006ac                NMI_Handler
-                0x00000000080006ac                EXTI3_IRQHandler
-                0x00000000080006ac                EXTI0_IRQHandler
-                0x00000000080006ac                I2C2_EV_IRQHandler
-                0x00000000080006ac                UsageFault_Handler
-                0x00000000080006ac                ADC1_2_IRQHandler
-                0x00000000080006ac                SPI1_IRQHandler
-                0x00000000080006ac                TAMPER_IRQHandler
-                0x00000000080006ac                TIM8_UP_IRQHandler
-                0x00000000080006ac                DMA2_Channel2_IRQHandler
-                0x00000000080006ac                DMA1_Channel4_IRQHandler
-                0x00000000080006ac                USART3_IRQHandler
-                0x00000000080006ac                RTC_IRQHandler
-                0x00000000080006ac                DMA1_Channel7_IRQHandler
-                0x00000000080006ac                CAN1_RX1_IRQHandler
-                0x00000000080006ac                UART5_IRQHandler
-                0x00000000080006ac                ADC3_IRQHandler
-                0x00000000080006ac                TIM4_IRQHandler
-                0x00000000080006ac                DMA2_Channel1_IRQHandler
-                0x00000000080006ac                I2C1_EV_IRQHandler
-                0x00000000080006ac                DMA1_Channel6_IRQHandler
-                0x00000000080006ac                UART4_IRQHandler
-                0x00000000080006ac                TIM3_IRQHandler
-                0x00000000080006ac                RCC_IRQHandler
-                0x00000000080006ac                TIM1_TRG_COM_IRQHandler
-                0x00000000080006ac                DMA1_Channel1_IRQHandler
-                0x00000000080006ac                Default_Handler
-                0x00000000080006ac                EXTI15_10_IRQHandler
-                0x00000000080006ac                TIM7_IRQHandler
-                0x00000000080006ac                TIM5_IRQHandler
-                0x00000000080006ac                EXTI9_5_IRQHandler
-                0x00000000080006ac                SPI2_IRQHandler
-                0x00000000080006ac                MemManage_Handler
-                0x00000000080006ac                DMA1_Channel5_IRQHandler
-                0x00000000080006ac                EXTI4_IRQHandler
-                0x00000000080006ac                USB_LP_CAN1_RX0_IRQHandler
-                0x00000000080006ac                USB_HP_CAN1_TX_IRQHandler
-                0x00000000080006ac                DMA1_Channel3_IRQHandler
-                0x00000000080006ac                FSMC_IRQHandler
-                0x00000000080006ac                TIM1_UP_IRQHandler
-                0x00000000080006ac                WWDG_IRQHandler
-                0x00000000080006ac                TIM2_IRQHandler
-                0x00000000080006ac                TIM1_BRK_IRQHandler
-                0x00000000080006ac                EXTI1_IRQHandler
-                0x00000000080006ac                RTCAlarm_IRQHandler
-                0x00000000080006ac                DMA2_Channel4_5_IRQHandler
-                0x00000000080006ac                USART2_IRQHandler
-                0x00000000080006ac                I2C2_ER_IRQHandler
-                0x00000000080006ac                DMA1_Channel2_IRQHandler
-                0x00000000080006ac                TIM8_BRK_IRQHandler
-                0x00000000080006ac                CAN1_SCE_IRQHandler
-                0x00000000080006ac                FLASH_IRQHandler
-                0x00000000080006ac                BusFault_Handler
-                0x00000000080006ac                USART1_IRQHandler
-                0x00000000080006ac                SPI3_IRQHandler
-                0x00000000080006ac                I2C1_ER_IRQHandler
-                0x00000000080006ac                USBWakeUp_IRQHandler
-                0x00000000080006ac                DMA2_Channel3_IRQHandler
- *fill*         0x00000000080006ae        0x2 
+                0x00000000080006b0        0x2 Output/startup.o
+                0x00000000080006b0                EXTI2_IRQHandler
+                0x00000000080006b0                TIM8_TRG_COM_IRQHandler
+                0x00000000080006b0                TIM8_CC_IRQHandler
+                0x00000000080006b0                DebugMon_Handler
+                0x00000000080006b0                TIM1_CC_IRQHandler
+                0x00000000080006b0                HardFault_Handler
+                0x00000000080006b0                TIM6_IRQHandler
+                0x00000000080006b0                PVD_IRQHandler
+                0x00000000080006b0                SDIO_IRQHandler
+                0x00000000080006b0                NMI_Handler
+                0x00000000080006b0                EXTI3_IRQHandler
+                0x00000000080006b0                EXTI0_IRQHandler
+                0x00000000080006b0                I2C2_EV_IRQHandler
+                0x00000000080006b0                UsageFault_Handler
+                0x00000000080006b0                ADC1_2_IRQHandler
+                0x00000000080006b0                SPI1_IRQHandler
+                0x00000000080006b0                TAMPER_IRQHandler
+                0x00000000080006b0                TIM8_UP_IRQHandler
+                0x00000000080006b0                DMA2_Channel2_IRQHandler
+                0x00000000080006b0                DMA1_Channel4_IRQHandler
+                0x00000000080006b0                USART3_IRQHandler
+                0x00000000080006b0                RTC_IRQHandler
+                0x00000000080006b0                DMA1_Channel7_IRQHandler
+                0x00000000080006b0                CAN1_RX1_IRQHandler
+                0x00000000080006b0                UART5_IRQHandler
+                0x00000000080006b0                ADC3_IRQHandler
+                0x00000000080006b0                TIM4_IRQHandler
+                0x00000000080006b0                DMA2_Channel1_IRQHandler
+                0x00000000080006b0                I2C1_EV_IRQHandler
+                0x00000000080006b0                DMA1_Channel6_IRQHandler
+                0x00000000080006b0                UART4_IRQHandler
+                0x00000000080006b0                TIM3_IRQHandler
+                0x00000000080006b0                RCC_IRQHandler
+                0x00000000080006b0                TIM1_TRG_COM_IRQHandler
+                0x00000000080006b0                DMA1_Channel1_IRQHandler
+                0x00000000080006b0                Default_Handler
+                0x00000000080006b0                EXTI15_10_IRQHandler
+                0x00000000080006b0                TIM7_IRQHandler
+                0x00000000080006b0                TIM5_IRQHandler
+                0x00000000080006b0                EXTI9_5_IRQHandler
+                0x00000000080006b0                SPI2_IRQHandler
+                0x00000000080006b0                MemManage_Handler
+                0x00000000080006b0                DMA1_Channel5_IRQHandler
+                0x00000000080006b0                EXTI4_IRQHandler
+                0x00000000080006b0                USB_LP_CAN1_RX0_IRQHandler
+                0x00000000080006b0                USB_HP_CAN1_TX_IRQHandler
+                0x00000000080006b0                DMA1_Channel3_IRQHandler
+                0x00000000080006b0                FSMC_IRQHandler
+                0x00000000080006b0                TIM1_UP_IRQHandler
+                0x00000000080006b0                WWDG_IRQHandler
+                0x00000000080006b0                TIM2_IRQHandler
+                0x00000000080006b0                TIM1_BRK_IRQHandler
+                0x00000000080006b0                EXTI1_IRQHandler
+                0x00000000080006b0                RTCAlarm_IRQHandler
+                0x00000000080006b0                DMA2_Channel4_5_IRQHandler
+                0x00000000080006b0                USART2_IRQHandler
+                0x00000000080006b0                I2C2_ER_IRQHandler
+                0x00000000080006b0                DMA1_Channel2_IRQHandler
+                0x00000000080006b0                TIM8_BRK_IRQHandler
+                0x00000000080006b0                CAN1_SCE_IRQHandler
+                0x00000000080006b0                FLASH_IRQHandler
+                0x00000000080006b0                BusFault_Handler
+                0x00000000080006b0                USART1_IRQHandler
+                0x00000000080006b0                SPI3_IRQHandler
+                0x00000000080006b0                I2C1_ER_IRQHandler
+                0x00000000080006b0                USBWakeUp_IRQHandler
+                0x00000000080006b0                DMA2_Channel3_IRQHandler
+ *fill*         0x00000000080006b2        0x2 
  .text.Reset_Handler
-                0x00000000080006b0       0x50 Output/startup.o
-                0x00000000080006b0                Reset_Handler
+                0x00000000080006b4       0x50 Output/startup.o
+                0x00000000080006b4                Reset_Handler
  .text.GPIO_Init
-                0x0000000008000700       0xa2 Output/stm32f10x_gpio.o
-                0x0000000008000700                GPIO_Init
- .text.GPIO_StructInit
-                0x00000000080007a2        0xe Output/stm32f10x_gpio.o
-                0x00000000080007a2                GPIO_StructInit
+                0x0000000008000704       0xa2 Output/stm32f10x_gpio.o
+                0x0000000008000704                GPIO_Init
  .text.GPIO_ReadInputDataBit
-                0x00000000080007b0        0xc Output/stm32f10x_gpio.o
-                0x00000000080007b0                GPIO_ReadInputDataBit
+                0x00000000080007a6        0xc Output/stm32f10x_gpio.o
+                0x00000000080007a6                GPIO_ReadInputDataBit
+ *fill*         0x00000000080007b2        0x2 
  .text.RCC_APB2PeriphClockCmd
-                0x00000000080007bc       0x18 Output/stm32f10x_rcc.o
-                0x00000000080007bc                RCC_APB2PeriphClockCmd
+                0x00000000080007b4       0x18 Output/stm32f10x_rcc.o
+                0x00000000080007b4                RCC_APB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x00000000080007d4       0x18 Output/stm32f10x_rcc.o
-                0x00000000080007d4                RCC_APB1PeriphClockCmd
+                0x00000000080007cc       0x18 Output/stm32f10x_rcc.o
+                0x00000000080007cc                RCC_APB1PeriphClockCmd
  .text.TIM_TimeBaseInit
-                0x00000000080007ec       0x94 Output/stm32f10x_tim.o
-                0x00000000080007ec                TIM_TimeBaseInit
+                0x00000000080007e4       0x94 Output/stm32f10x_tim.o
+                0x00000000080007e4                TIM_TimeBaseInit
  .text.TIM_OC1Init
-                0x0000000008000880       0x88 Output/stm32f10x_tim.o
-                0x0000000008000880                TIM_OC1Init
+                0x0000000008000878       0x88 Output/stm32f10x_tim.o
+                0x0000000008000878                TIM_OC1Init
  .text.TIM_OC2Init
-                0x0000000008000908       0x80 Output/stm32f10x_tim.o
-                0x0000000008000908                TIM_OC2Init
+                0x0000000008000900       0x80 Output/stm32f10x_tim.o
+                0x0000000008000900                TIM_OC2Init
  .text.TIM_OC3Init
-                0x0000000008000988       0x7c Output/stm32f10x_tim.o
-                0x0000000008000988                TIM_OC3Init
- .text.TIM_TimeBaseStructInit
-                0x0000000008000a04       0x12 Output/stm32f10x_tim.o
-                0x0000000008000a04                TIM_TimeBaseStructInit
- .text.TIM_OCStructInit
-                0x0000000008000a16       0x14 Output/stm32f10x_tim.o
-                0x0000000008000a16                TIM_OCStructInit
- .text.TIM_Cmd  0x0000000008000a2a       0x18 Output/stm32f10x_tim.o
-                0x0000000008000a2a                TIM_Cmd
+                0x0000000008000980       0x7c Output/stm32f10x_tim.o
+                0x0000000008000980                TIM_OC3Init
+ .text.TIM_Cmd  0x00000000080009fc       0x18 Output/stm32f10x_tim.o
+                0x00000000080009fc                TIM_Cmd
  .text.TIM_ARRPreloadConfig
-                0x0000000008000a42       0x18 Output/stm32f10x_tim.o
-                0x0000000008000a42                TIM_ARRPreloadConfig
+                0x0000000008000a14       0x18 Output/stm32f10x_tim.o
+                0x0000000008000a14                TIM_ARRPreloadConfig
  .text.TIM_OC1PreloadConfig
-                0x0000000008000a5a       0x10 Output/stm32f10x_tim.o
-                0x0000000008000a5a                TIM_OC1PreloadConfig
+                0x0000000008000a2c       0x10 Output/stm32f10x_tim.o
+                0x0000000008000a2c                TIM_OC1PreloadConfig
  .text.TIM_OC2PreloadConfig
-                0x0000000008000a6a       0x14 Output/stm32f10x_tim.o
-                0x0000000008000a6a                TIM_OC2PreloadConfig
+                0x0000000008000a3c       0x14 Output/stm32f10x_tim.o
+                0x0000000008000a3c                TIM_OC2PreloadConfig
  .text.TIM_OC3PreloadConfig
-                0x0000000008000a7e       0x10 Output/stm32f10x_tim.o
-                0x0000000008000a7e                TIM_OC3PreloadConfig
+                0x0000000008000a50       0x10 Output/stm32f10x_tim.o
+                0x0000000008000a50                TIM_OC3PreloadConfig
  .text.TIM_SetCompare1
-                0x0000000008000a8e        0x4 Output/stm32f10x_tim.o
-                0x0000000008000a8e                TIM_SetCompare1
+                0x0000000008000a60        0x4 Output/stm32f10x_tim.o
+                0x0000000008000a60                TIM_SetCompare1
  .text.TIM_SetCompare2
-                0x0000000008000a92        0x4 Output/stm32f10x_tim.o
-                0x0000000008000a92                TIM_SetCompare2
+                0x0000000008000a64        0x4 Output/stm32f10x_tim.o
+                0x0000000008000a64                TIM_SetCompare2
  .text.TIM_SetCompare3
-                0x0000000008000a96        0x4 Output/stm32f10x_tim.o
-                0x0000000008000a96                TIM_SetCompare3
- *fill*         0x0000000008000a9a        0x2 
+                0x0000000008000a68        0x4 Output/stm32f10x_tim.o
+                0x0000000008000a68                TIM_SetCompare3
  .text.SystemInit
-                0x0000000008000a9c       0xf0 Output/system_stm32f10x.o
-                0x0000000008000a9c                SystemInit
+                0x0000000008000a6c       0xf0 Output/system_stm32f10x.o
+                0x0000000008000a6c                SystemInit
  .text.vListInitialise
-                0x0000000008000b8c       0x16 Output/list.o
-                0x0000000008000b8c                vListInitialise
+                0x0000000008000b5c       0x16 Output/list.o
+                0x0000000008000b5c                vListInitialise
  .text.vListInitialiseItem
-                0x0000000008000ba2        0x6 Output/list.o
-                0x0000000008000ba2                vListInitialiseItem
+                0x0000000008000b72        0x6 Output/list.o
+                0x0000000008000b72                vListInitialiseItem
  .text.vListInsertEnd
-                0x0000000008000ba8       0x18 Output/list.o
-                0x0000000008000ba8                vListInsertEnd
+                0x0000000008000b78       0x18 Output/list.o
+                0x0000000008000b78                vListInsertEnd
  .text.vListInsert
-                0x0000000008000bc0       0x2e Output/list.o
-                0x0000000008000bc0                vListInsert
+                0x0000000008000b90       0x2e Output/list.o
+                0x0000000008000b90                vListInsert
  .text.uxListRemove
-                0x0000000008000bee       0x1e Output/list.o
-                0x0000000008000bee                uxListRemove
+                0x0000000008000bbe       0x1e Output/list.o
+                0x0000000008000bbe                uxListRemove
  .text.prvCopyDataToQueue
-                0x0000000008000c0c       0x6a Output/queue.o
+                0x0000000008000bdc       0x6a Output/queue.o
  .text.prvCopyDataFromQueue
-                0x0000000008000c76       0x28 Output/queue.o
+                0x0000000008000c46       0x28 Output/queue.o
  .text.prvUnlockQueue
-                0x0000000008000c9e       0x70 Output/queue.o
+                0x0000000008000c6e       0x70 Output/queue.o
  .text.xQueueGenericReset
-                0x0000000008000d0e       0x6a Output/queue.o
-                0x0000000008000d0e                xQueueGenericReset
+                0x0000000008000cde       0x6a Output/queue.o
+                0x0000000008000cde                xQueueGenericReset
  .text.xQueueGenericCreate
-                0x0000000008000d78       0x34 Output/queue.o
-                0x0000000008000d78                xQueueGenericCreate
+                0x0000000008000d48       0x34 Output/queue.o
+                0x0000000008000d48                xQueueGenericCreate
  .text.xQueueGenericSend
-                0x0000000008000dac      0x104 Output/queue.o
-                0x0000000008000dac                xQueueGenericSend
+                0x0000000008000d7c      0x104 Output/queue.o
+                0x0000000008000d7c                xQueueGenericSend
  .text.xQueueGenericReceive
-                0x0000000008000eb0      0x138 Output/queue.o
-                0x0000000008000eb0                xQueueGenericReceive
+                0x0000000008000e80      0x138 Output/queue.o
+                0x0000000008000e80                xQueueGenericReceive
  .text.prvAddCurrentTaskToDelayedList
-                0x0000000008000fe8       0x88 Output/tasks.o
+                0x0000000008000fb8       0x88 Output/tasks.o
  .text.prvResetNextTaskUnblockTime
-                0x0000000008001070       0x24 Output/tasks.o
+                0x0000000008001040       0x24 Output/tasks.o
  .text.xTaskCreate
-                0x0000000008001094      0x1ac Output/tasks.o
-                0x0000000008001094                xTaskCreate
+                0x0000000008001064      0x1ac Output/tasks.o
+                0x0000000008001064                xTaskCreate
  .text.vTaskStartScheduler
-                0x0000000008001240       0x60 Output/tasks.o
-                0x0000000008001240                vTaskStartScheduler
+                0x0000000008001210       0x60 Output/tasks.o
+                0x0000000008001210                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x00000000080012a0       0x10 Output/tasks.o
-                0x00000000080012a0                vTaskSuspendAll
+                0x0000000008001270       0x10 Output/tasks.o
+                0x0000000008001270                vTaskSuspendAll
  .text.xTaskIncrementTick
-                0x00000000080012b0      0x10c Output/tasks.o
-                0x00000000080012b0                xTaskIncrementTick
+                0x0000000008001280      0x10c Output/tasks.o
+                0x0000000008001280                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x00000000080013bc       0xd8 Output/tasks.o
-                0x00000000080013bc                xTaskResumeAll
+                0x000000000800138c       0xd8 Output/tasks.o
+                0x000000000800138c                xTaskResumeAll
  .text.vTaskDelay
-                0x0000000008001494       0x2e Output/tasks.o
-                0x0000000008001494                vTaskDelay
- *fill*         0x00000000080014c2        0x2 
+                0x0000000008001464       0x2e Output/tasks.o
+                0x0000000008001464                vTaskDelay
+ *fill*         0x0000000008001492        0x2 
  .text.prvIdleTask
-                0x00000000080014c4       0x74 Output/tasks.o
+                0x0000000008001494       0x74 Output/tasks.o
  .text.vTaskSwitchContext
-                0x0000000008001538       0x60 Output/tasks.o
-                0x0000000008001538                vTaskSwitchContext
+                0x0000000008001508       0x60 Output/tasks.o
+                0x0000000008001508                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x0000000008001598       0x20 Output/tasks.o
-                0x0000000008001598                vTaskPlaceOnEventList
+                0x0000000008001568       0x20 Output/tasks.o
+                0x0000000008001568                vTaskPlaceOnEventList
  .text.xTaskRemoveFromEventList
-                0x00000000080015b8       0x70 Output/tasks.o
-                0x00000000080015b8                xTaskRemoveFromEventList
+                0x0000000008001588       0x70 Output/tasks.o
+                0x0000000008001588                xTaskRemoveFromEventList
  .text.vTaskSetTimeOutState
-                0x0000000008001628       0x18 Output/tasks.o
-                0x0000000008001628                vTaskSetTimeOutState
+                0x00000000080015f8       0x18 Output/tasks.o
+                0x00000000080015f8                vTaskSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x0000000008001640       0x4c Output/tasks.o
-                0x0000000008001640                xTaskCheckForTimeOut
+                0x0000000008001610       0x4c Output/tasks.o
+                0x0000000008001610                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x000000000800168c        0xc Output/tasks.o
-                0x000000000800168c                vTaskMissedYield
+                0x000000000800165c        0xc Output/tasks.o
+                0x000000000800165c                vTaskMissedYield
  .text.vTaskPriorityInherit
-                0x0000000008001698       0x94 Output/tasks.o
-                0x0000000008001698                vTaskPriorityInherit
+                0x0000000008001668       0x94 Output/tasks.o
+                0x0000000008001668                vTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x000000000800172c       0x70 Output/tasks.o
-                0x000000000800172c                xTaskPriorityDisinherit
+                0x00000000080016fc       0x70 Output/tasks.o
+                0x00000000080016fc                xTaskPriorityDisinherit
  .text.pvTaskIncrementMutexHeldCount
-                0x000000000800179c       0x18 Output/tasks.o
-                0x000000000800179c                pvTaskIncrementMutexHeldCount
+                0x000000000800176c       0x18 Output/tasks.o
+                0x000000000800176c                pvTaskIncrementMutexHeldCount
+ .text.xTaskNotifyWait
+                0x0000000008001784       0x88 Output/tasks.o
+                0x0000000008001784                xTaskNotifyWait
+ .text.xTaskGenericNotify
+                0x000000000800180c       0xa4 Output/tasks.o
+                0x000000000800180c                xTaskGenericNotify
  .text.prvTaskExitError
-                0x00000000080017b4       0x12 Output/port.o
- *fill*         0x00000000080017c6        0x2 
+                0x00000000080018b0       0x12 Output/port.o
+ *fill*         0x00000000080018c2        0x2 
  .text.prvPortStartFirstTask
-                0x00000000080017c8       0x20 Output/port.o
+                0x00000000080018c4       0x20 Output/port.o
  .text.pxPortInitialiseStack
-                0x00000000080017e8       0x24 Output/port.o
-                0x00000000080017e8                pxPortInitialiseStack
- *fill*         0x000000000800180c        0x4 
+                0x00000000080018e4       0x24 Output/port.o
+                0x00000000080018e4                pxPortInitialiseStack
+ *fill*         0x0000000008001908        0x8 
  .text.SVC_Handler
-                0x0000000008001810       0x24 Output/port.o
-                0x0000000008001810                SVC_Handler
+                0x0000000008001910       0x24 Output/port.o
+                0x0000000008001910                SVC_Handler
  .text.vPortEnterCritical
-                0x0000000008001834       0x20 Output/port.o
-                0x0000000008001834                vPortEnterCritical
+                0x0000000008001934       0x20 Output/port.o
+                0x0000000008001934                vPortEnterCritical
  .text.vPortExitCritical
-                0x0000000008001854       0x14 Output/port.o
-                0x0000000008001854                vPortExitCritical
- *fill*         0x0000000008001868        0x8 
+                0x0000000008001954       0x14 Output/port.o
+                0x0000000008001954                vPortExitCritical
+ *fill*         0x0000000008001968        0x8 
  .text.PendSV_Handler
-                0x0000000008001870       0x44 Output/port.o
-                0x0000000008001870                PendSV_Handler
+                0x0000000008001970       0x44 Output/port.o
+                0x0000000008001970                PendSV_Handler
  .text.SysTick_Handler
-                0x00000000080018b4       0x2c Output/port.o
-                0x00000000080018b4                SysTick_Handler
+                0x00000000080019b4       0x2c Output/port.o
+                0x00000000080019b4                SysTick_Handler
  .text.vPortSetupTimerInterrupt
-                0x00000000080018e0       0x14 Output/port.o
-                0x00000000080018e0                vPortSetupTimerInterrupt
+                0x00000000080019e0       0x14 Output/port.o
+                0x00000000080019e0                vPortSetupTimerInterrupt
  .text.xPortStartScheduler
-                0x00000000080018f4       0x34 Output/port.o
-                0x00000000080018f4                xPortStartScheduler
+                0x00000000080019f4       0x34 Output/port.o
+                0x00000000080019f4                xPortStartScheduler
  .text.prvInsertBlockIntoFreeList
-                0x0000000008001928       0x48 Output/heap_4.o
+                0x0000000008001a28       0x48 Output/heap_4.o
  .text.pvPortMalloc
-                0x0000000008001970       0xf4 Output/heap_4.o
-                0x0000000008001970                pvPortMalloc
+                0x0000000008001a70       0xf4 Output/heap_4.o
+                0x0000000008001a70                pvPortMalloc
  .text.vPortFree
-                0x0000000008001a64       0x4c Output/heap_4.o
-                0x0000000008001a64                vPortFree
+                0x0000000008001b64       0x4c Output/heap_4.o
+                0x0000000008001b64                vPortFree
  *(.rodata)
+ .rodata        0x0000000008001bb0        0x3 Output/main.o
  *(.rodata.*)
+ .rodata.TaskButton.str1.1
+                0x0000000008001bb3        0x4 Output/main.o
  .rodata.main.str1.1
-                0x0000000008001ab0       0x16 Output/main.o
+                0x0000000008001bb7       0x16 Output/main.o
  .rodata.vTaskStartScheduler.str1.1
-                0x0000000008001ac6        0x5 Output/tasks.o
-                0x0000000008001acc                . = ALIGN (0x4)
- *fill*         0x0000000008001acb        0x1 
-                0x0000000008001acc                _etext = .
+                0x0000000008001bcd        0x5 Output/tasks.o
+                0x0000000008001bd4                . = ALIGN (0x4)
+ *fill*         0x0000000008001bd2        0x2 
+                0x0000000008001bd4                _etext = .
 
-.glue_7         0x0000000008001acc        0x0
- .glue_7        0x0000000008001acc        0x0 linker stubs
+.glue_7         0x0000000008001bd4        0x0
+ .glue_7        0x0000000008001bd4        0x0 linker stubs
 
-.glue_7t        0x0000000008001acc        0x0
- .glue_7t       0x0000000008001acc        0x0 linker stubs
+.glue_7t        0x0000000008001bd4        0x0
+ .glue_7t       0x0000000008001bd4        0x0 linker stubs
 
-.vfp11_veneer   0x0000000008001acc        0x0
- .vfp11_veneer  0x0000000008001acc        0x0 linker stubs
+.vfp11_veneer   0x0000000008001bd4        0x0
+ .vfp11_veneer  0x0000000008001bd4        0x0 linker stubs
 
-.v4_bx          0x0000000008001acc        0x0
- .v4_bx         0x0000000008001acc        0x0 linker stubs
+.v4_bx          0x0000000008001bd4        0x0
+ .v4_bx         0x0000000008001bd4        0x0 linker stubs
 
-.iplt           0x0000000008001acc        0x0
- .iplt          0x0000000008001acc        0x0 Output/main.o
+.iplt           0x0000000008001bd4        0x0
+ .iplt          0x0000000008001bd4        0x0 Output/main.o
 
-.rel.dyn        0x0000000008001acc        0x0
- .rel.iplt      0x0000000008001acc        0x0 Output/main.o
+.rel.dyn        0x0000000008001bd4        0x0
+ .rel.iplt      0x0000000008001bd4        0x0 Output/main.o
 
-.data           0x0000000020000000        0x8 load address 0x0000000008001acc
+.data           0x0000000020000000        0x4 load address 0x0000000008001bd4
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data.*)
- .data.brightness
-                0x0000000020000000        0x3 Output/main.o
- *fill*         0x0000000020000003        0x1 
  .data.uxCriticalNesting
-                0x0000000020000004        0x4 Output/port.o
-                0x0000000020000008                . = ALIGN (0x4)
-                0x0000000020000008                _edata = .
-                0x0000000008001acc                _sidata = LOADADDR (.data)
+                0x0000000020000000        0x4 Output/port.o
+                0x0000000020000004                . = ALIGN (0x4)
+                0x0000000020000004                _edata = .
+                0x0000000008001bd4                _sidata = LOADADDR (.data)
 
-.igot.plt       0x0000000020000008        0x0 load address 0x0000000008001ad4
- .igot.plt      0x0000000020000008        0x0 Output/main.o
+.igot.plt       0x0000000020000004        0x0 load address 0x0000000008001bd8
+ .igot.plt      0x0000000020000004        0x0 Output/main.o
 
-.bss            0x0000000020000008     0x292c load address 0x0000000008001ad4
-                0x0000000020000008                . = ALIGN (0x4)
-                0x0000000020000008                _sbss = .
+.bss            0x0000000020000004     0x2930 load address 0x0000000008001bd8
+                0x0000000020000004                . = ALIGN (0x4)
+                0x0000000020000004                _sbss = .
  *(.bss)
  *(.bss.*)
- .bss.qLED1     0x0000000020000008        0x4 Output/main.o
- .bss.qLED2     0x000000002000000c        0x4 Output/main.o
- .bss.qLED3     0x0000000020000010        0x4 Output/main.o
+ .bss.brightness
+                0x0000000020000004        0x3 Output/main.o
+ *fill*         0x0000000020000007        0x1 
+ .bss.qLED      0x0000000020000008        0x4 Output/main.o
  .bss.selectedLED
-                0x0000000020000014        0x1 Output/main.o
- *fill*         0x0000000020000015        0x3 
+                0x000000002000000c        0x1 Output/main.o
+ *fill*         0x000000002000000d        0x3 
+ .bss.taskLED2Handle
+                0x0000000020000010        0x4 Output/main.o
+ .bss.taskLED3Handle
+                0x0000000020000014        0x4 Output/main.o
  .bss.pxCurrentTCB
                 0x0000000020000018        0x4 Output/tasks.o
                 0x0000000020000018                pxCurrentTCB
